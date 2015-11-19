@@ -7,13 +7,15 @@ function getSignup(request, response) {
 
 // POST /signup
 function postSignup(request, response) {
-  var signupStrategy = passport.authenticate('local-signup', {
+  console.log(request.params);
+
+  var signUpStrategy = passport.authenticate('local-signup', {
     successRedirect : '/',
     failureRedirect : '/signup',
     failureFlash : true
   });
 
-  return signupStrategy(request, response);
+  return signUpStrategy(request, response) ;
 }
 
 // GET /login
@@ -23,13 +25,13 @@ function getLogin(request, response) {
 
 // POST /login
 function postLogin(request, response) {
-  var loginStrategy = passport.authenticate('local-login', {
+  var loginProperty = passport.authenticate('local-login', {
     successRedirect : '/',
     failureRedirect : '/login',
     failureFlash : true
   });
 
-  return loginStrategy(request, response);
+  return loginProperty(request, response);
 }
 
 // GET /logout

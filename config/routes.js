@@ -1,18 +1,16 @@
-var express           = require('express');
-var router            = express.Router();
+var express = require('express');
+var router = express.Router();
 // Parses information from POST
-var bodyParser        = require('body-parser');
+var bodyParser = require('body-parser');
 // Used to manipulate POST methods
-var methodOverride    = require('method-override');
-var passport          = require("passport");
-var usersController   = require('../controllers/users');
+var methodOverride = require('method-override');
+var passport = require("passport");
+var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
 
 function authenticatedUser(req, res, next) {
   // If the user is authenticated, then we continue the execution
-  if (req.isAuthenticated()) {
-    return next();
-  }
+  if (req.isAuthenticated()) return next();
 
   // Otherwise the request is always redirected to the home page
   res.redirect('/');
